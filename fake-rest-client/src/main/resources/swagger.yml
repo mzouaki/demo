@@ -1,0 +1,543 @@
+openapi: 3.0.1
+info:
+  title: FakeRESTApi.Web V1
+  version: v1
+servers:
+  - url: https://fakerestapi.azurewebsites.net/
+
+paths:
+  /api/v1/Activities:
+    get:
+      operationId: getActivities
+      tags:
+        - Activities
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+    post:
+      operationId: createActivity
+      tags:
+        - Activities
+      requestBody:
+        content:
+          application/json; v=1.0:
+            schema:
+              $ref: '#/components/schemas/Activity'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                $ref: '#/components/schemas/Activity'
+            
+  /api/v1/Activities/{id}:
+    get:
+      operationId: getActivityById
+      tags:
+        - Activities
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                $ref: '#/components/schemas/Activity'
+    put:
+      operationId: updateActivity
+      tags:
+        - Activities
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json; v=1.0:
+            schema:
+              $ref: '#/components/schemas/Activity'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                $ref: '#/components/schemas/Activity'
+    delete:
+      operationId: deleteActivity
+      tags:
+        - Activities
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  /api/v1/Authors:
+    get:
+      operationId: getAuthors
+      tags:
+        - Authors
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Author'
+    post:
+      operationId: createAuthor
+      tags:
+        - Authors
+      requestBody:
+        content:
+          application/json; v=1.0:
+            schema:
+              $ref: '#/components/schemas/Author'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                $ref: '#/components/schemas/Author'
+  /api/v1/Authors/authors/books/{idBook}:
+    get:
+      operationId: getAuthorsByBookId
+      tags:
+        - Authors
+      parameters:
+        - name: idBook
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Author'
+  /api/v1/Authors/{id}:
+    get:
+      operationId: getAuthorById
+      tags:
+        - Authors
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                $ref: '#/components/schemas/Author'
+    put:
+      operationId: updateAuthor
+      tags:
+        - Authors
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json; v=1.0:
+            schema:
+              $ref: '#/components/schemas/Author'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                $ref: '#/components/schemas/Author'
+    delete:
+      operationId: deleteAuthor
+      tags:
+        - Authors
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  /api/v1/Books:
+    get:
+      operationId: getBooks
+      tags:
+        - Books
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+    post:
+      operationId: createBook
+      tags:
+        - Books
+      requestBody:
+        content:
+          application/json; v=1.0:
+            schema:
+              $ref: '#/components/schemas/Book'
+      responses:
+        '200':
+          description: Success
+  /api/v1/Books/{id}:
+    get:
+      operationId: getBookById
+      tags:
+        - Books
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                $ref: '#/components/schemas/Book'
+    put:
+      operationId: updateBook
+      tags:
+        - Books
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json; v=1.0:
+            schema:
+              $ref: '#/components/schemas/Book'
+      responses:
+        '200':
+          description: Success
+    delete:
+      operationId: deleteBook
+      tags:
+        - Books
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  /api/v1/CoverPhotos:
+    get:
+      operationId: getCoverPhotos
+      tags:
+        - CoverPhotos
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CoverPhoto'
+    post:
+      operationId: createCoverPhoto
+      tags:
+        - CoverPhotos
+      requestBody:
+        content:
+          application/json; v=1.0:
+            schema:
+              $ref: '#/components/schemas/CoverPhoto'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                $ref: '#/components/schemas/CoverPhoto'
+  /api/v1/CoverPhotos/books/covers/{idBook}:
+    get:
+      operationId: getCoverPhotosByIdBook
+      tags:
+        - CoverPhotos
+      parameters:
+        - name: idBook
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CoverPhoto'
+  /api/v1/CoverPhotos/{id}:
+    get:
+      operationId: getCoverPhotoById
+      tags:
+        - CoverPhotos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                $ref: '#/components/schemas/CoverPhoto'
+    put:
+      operationId: updateCoverPhoto
+      tags:
+        - CoverPhotos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json; v=1.0:
+            schema:
+              $ref: '#/components/schemas/CoverPhoto'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                $ref: '#/components/schemas/CoverPhoto'
+    delete:
+      operationId: deleteCoverPhoto
+      tags:
+        - CoverPhotos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  /api/v1/Users:
+    get:
+      operationId: getUsers
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json; v=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      operationId: createUser
+      tags:
+        - Users
+      requestBody:
+        content:
+          application/json; v=1.0:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Success
+  /api/v1/Users/{id}:
+    get:
+      operationId: getUserById
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+    put:
+      operationId: updateUser
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json; v=1.0:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Success
+    delete:
+      operationId: deleteUser
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    Activity:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        title:
+          type: string
+          nullable: true
+        dueDate:
+          type: string
+          format: date-time
+        completed:
+          type: boolean
+      additionalProperties: false
+    Author:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        idBook:
+          type: integer
+          format: int32
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        title:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        pageCount:
+          type: integer
+          format: int32
+        excerpt:
+          type: string
+          nullable: true
+        publishDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    CoverPhoto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        idBook:
+          type: integer
+          format: int32
+        url:
+          type: string
+          format: uri
+          nullable: true
+      additionalProperties: false
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        userName:
+          type: string
+          nullable: true
+        password:
+          type: string
+          nullable: true
+      additionalProperties: false
